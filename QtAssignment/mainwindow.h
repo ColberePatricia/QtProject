@@ -18,9 +18,6 @@ public:
     ~MainWindow();
     void setView(MainView* view);
 
-    // Calling the main view functions after a line rotation or a view position
-    void lineRotation(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi);
-    void viewPosition(float eX, float eY, float eZ, float directX, float directY, float directZ);
 
 private slots:
     void on_actionRoty_triggered();
@@ -33,6 +30,8 @@ private slots:
     void on_actionLine_rotation_triggered();
     //Make the view be the default position
     void on_actionDefault_position_triggered();
+
+    void on_actionDefault_rotation_triggered();
 
 private:
     Ui::MainWindow *ui;

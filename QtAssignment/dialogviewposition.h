@@ -2,7 +2,6 @@
 #define DIALOGVIEWPOSITION_H
 
 #include <QDialog>
-#include "mainwindow.h"
 
 namespace Ui {
 class DialogViewPosition;

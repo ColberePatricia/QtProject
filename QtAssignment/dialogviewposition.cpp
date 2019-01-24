@@ -41,12 +41,6 @@ void DialogViewPosition::on_buttonBox_accepted()
         directZ = (ui->textEdit_6->toPlainText()).toFloat();
     else
         directZ=0;
-
-    //qDebug()<<"READ eX "<<ui->textEdit->toPlainText();
-    //qDebug()<<"READ eX "<<eX;
-    //qDebug()<<"READ eY "<<eY;
-    //qDebug()<<"READ eZ "<<eZ;
-
-    MainWindow mw;
-    mw.viewPosition(eX, eY, eZ, directX, directY, directZ);
 }
+
+

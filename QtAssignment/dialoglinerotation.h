@@ -2,7 +2,6 @@
 #define DIALOGLINEROTATION_H
 
 #include <QDialog>
-#include "mainwindow.h"
 
 namespace Ui {
 class DialogLineRotation;

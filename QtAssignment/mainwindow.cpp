@@ -36,15 +36,35 @@ void MainWindow::on_actionView_position_triggered()
 {
     DialogViewPosition dvposition;
     dvposition.setModal(true);
-    dvposition.exec();
 
+    if(dvposition.exec()==QDialog::Accepted){
+        this->eX = dvposition.eX;
+        this->eY = dvposition.eY;
+        this->eZ = dvposition.eZ;
+        this->directX = dvposition.directX;
+        this->directY = dvposition.directY;
+        this->directZ = dvposition.directZ;
+    }
+
+    view->updateView(eX, eY, eZ, directX, directY, directZ);
 }
 
 void MainWindow::on_actionLine_rotation_triggered()
 {
     DialogLineRotation dlrot;
     dlrot.setModal(true);
-    dlrot.exec();
+
+    if(dlrot.exec()==QDialog::Accepted){
+        this->bX = dlrot.bX;
+        this->bY = dlrot.bY;
+        this->bZ = dlrot.bZ;
+        this->dX = dlrot.dX;
+        this->dY = dlrot.dY;
+        this->dZ = dlrot.dZ;
+        this->phi = dlrot.phi;
+    }
+
+    view->rotateModel(bX, bY, bZ, dX, dY, dZ, phi);
 }
 
 void MainWindow::on_actionDefault_position_triggered()
@@ -53,25 +73,9 @@ void MainWindow::on_actionDefault_position_triggered()
 }
 
 
-void MainWindow::lineRotation(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi){
-    this->bX = bX;
-    this->bY = bY;
-    this->bZ = bZ;
-    this->dX = dX;
-    this->dY = dY;
-    this->dZ = dZ;
-    this->phi = phi;
-    view->rotateModel(bX, bY, bZ, dX, dY, dZ, phi);
-}
-void MainWindow::viewPosition(float eX, float eY, float eZ, float directX, float directY, float directZ){
-    this->eX = eX;
-    this->eY = eY;
-    this->eZ = eZ;
-    this->directX = directX;
-    this->directY = directY;
-    this->directZ = directZ;
-    view->setAngle(eX);
-    //view->updateView(eX, eY, eZ, directX, directY, directZ);
-}
 
 
+void MainWindow::on_actionDefault_rotation_triggered()
+{
+    view->rotateModel(1, 0, 0, 1, 0, 0, 0);
+}

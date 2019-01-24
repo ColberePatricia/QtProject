@@ -31,6 +31,7 @@ public:
     QAction *actionLine_rotation;
     QAction *actionView_position;
     QAction *actionDefault_position;
+    QAction *actionDefault_rotation;
     QWidget *centralWidget;
     QMenuBar *menuBar;
     QMenu *menuRotx;
@@ -52,6 +53,8 @@ public:
         actionView_position->setObjectName(QStringLiteral("actionView_position"));
         actionDefault_position = new QAction(MainWindow);
         actionDefault_position->setObjectName(QStringLiteral("actionDefault_position"));
+        actionDefault_rotation = new QAction(MainWindow);
+        actionDefault_rotation->setObjectName(QStringLiteral("actionDefault_rotation"));
         centralWidget = new QWidget(MainWindow);
         centralWidget->setObjectName(QStringLiteral("centralWidget"));
         MainWindow->setCentralWidget(centralWidget);
@@ -69,11 +72,10 @@ public:
         MainWindow->setStatusBar(statusBar);
 
         menuBar->addAction(menuRotx->menuAction());
-        menuRotx->addAction(actionRoty);
-        menuRotx->addAction(actionRotx);
         menuRotx->addAction(actionLine_rotation);
         menuRotx->addAction(actionView_position);
         menuRotx->addAction(actionDefault_position);
+        menuRotx->addAction(actionDefault_rotation);
 
         retranslateUi(MainWindow);
 
@@ -88,6 +90,7 @@ public:
         actionLine_rotation->setText(QApplication::translate("MainWindow", "Line rotation", nullptr));
         actionView_position->setText(QApplication::translate("MainWindow", "View position", nullptr));
         actionDefault_position->setText(QApplication::translate("MainWindow", "Default position", nullptr));
+        actionDefault_rotation->setText(QApplication::translate("MainWindow", "Default rotation", nullptr));
         menuRotx->setTitle(QApplication::translate("MainWindow", "Rotation", nullptr));
     } // retranslateUi
 

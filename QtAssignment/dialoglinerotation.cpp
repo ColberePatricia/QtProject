@@ -15,12 +15,12 @@ DialogLineRotation::~DialogLineRotation()
 
 void DialogLineRotation::on_buttonBox_accepted()
 {
-    //If no value was entered in a text edit no tranformation is made for the corresponding value
+    //If no value was entered in a text edit we use the value to return to the default
 
     if (ui->textEdit->toPlainText() != "")
         bX= (ui->textEdit->toPlainText()).toFloat();
     else
-        bX=0;
+        bX=1;
     if (ui->textEdit_2->toPlainText() != "")
         bY = (ui->textEdit_2->toPlainText()).toFloat();
     else
@@ -32,7 +32,7 @@ void DialogLineRotation::on_buttonBox_accepted()
     if (ui->textEdit_3->toPlainText() != "")
         dX = (ui->textEdit_3->toPlainText()).toFloat();
     else
-        dX=0;
+        dX=1;
     if (ui->textEdit_5->toPlainText() != "")
         dY = (ui->textEdit_5->toPlainText()).toFloat();
     else
@@ -46,8 +46,6 @@ void DialogLineRotation::on_buttonBox_accepted()
     else
         phi=0;
 
-    MainWindow mw;
-    mw.lineRotation(bX, bY, bZ, dX, dY, dZ, phi);
 }
 
 void DialogLineRotation::on_buttonBox_rejected()
