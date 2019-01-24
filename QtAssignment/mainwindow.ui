@@ -20,7 +20,7 @@
      <x>0</x>
      <y>0</y>
      <width>400</width>
-     <height>17</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuRotx">
@@ -29,6 +29,9 @@
     </property>
     <addaction name="actionRoty"/>
     <addaction name="actionRotx"/>
+    <addaction name="actionLine_rotation"/>
+    <addaction name="actionView_position"/>
+    <addaction name="actionDefault_position"/>
    </widget>
    <addaction name="menuRotx"/>
   </widget>
@@ -49,6 +52,21 @@
   <action name="actionRotx">
    <property name="text">
     <string>Rotx45</string>
+   </property>
+  </action>
+  <action name="actionLine_rotation">
+   <property name="text">
+    <string>Line rotation</string>
+   </property>
+  </action>
+  <action name="actionView_position">
+   <property name="text">
+    <string>View position</string>
+   </property>
+  </action>
+  <action name="actionDefault_position">
+   <property name="text">
+    <string>Default position</string>
    </property>
   </action>
  </widget>

@@ -1,5 +1,5 @@
 #include "scenebasic.h"
-
+#include <QDebug>
 #include <cstdio>
 #include <cstdlib>
 
@@ -24,9 +24,36 @@ SceneBasic::SceneBasic() : angle(0.0)
 
 void SceneBasic::setAngle(float angle)
 {
+    qDebug()<<"READ angle "<<angle;
     this->angle = angle;
     model *= glm::rotate(mat4(1.0f),angle, vec3(1.0f,0.0f,0.0f));
 }
+
+void SceneBasic::updateView(float eX, float eY, float eZ, float directX, float directY, float directZ){
+    qDebug()<<"UPDATE VIEW READ eX "<<eX;
+    view = glm::lookAt(vec3(eX, eY, eZ), vec3(directX, directY, directZ), vec3(0.0f, 1.0f, 0.0f));
+    qDebug()<<"READ eX "<<eX;
+}
+
+void SceneBasic::rotateModel(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi){
+    model = glm::translate(mat4(1.0f), vec3(bX, bY, bZ));
+
+    float angleRad = phi*2*PI/360.0;
+    if (phi >= 360.0)
+        angleRad -= 2*PI;
+    float length_of_d = sqrt((dX*dX) + (dY*dY) + (dZ*dZ));
+    model *= glm::rotate(mat4(1.0f), angleRad, vec3(dX/length_of_d, dY/length_of_d, dZ/length_of_d));
+
+    model *= glm::translate(mat4(1.0f), vec3(-bX, -bY, -bZ));
+}
+
+void SceneBasic::update( float t )
+{
+    //angle += t*2*PI/360.0;
+    //if( t >= 360.0) angle -= 2*PI;
+}
+
+
 
 void SceneBasic::readData(const char* fname)
 {
@@ -180,18 +207,16 @@ void SceneBasic::initScene()
 
   //  model *= glm::rotate(mat4(1.0f),-ang, vec3(0.0f,1.0f,0.0f));
     view = glm::lookAt(vec3(0.0f,0.0f,2.1f), vec3(0.0f,0.0f,0.0f), vec3(0.0f,1.0f,0.0f));
+
+    // Our default position is the same as the first view
+    updateView(0,0,2,0,0,0);
+
     projection = mat4(1.0f);
 
     glClearColor( 0.3, 0.3, 0.3, 1.0 );
     glEnable(GL_DEPTH_TEST);
 }
 
-
-void SceneBasic::update( float t )
-{
-  //  angle += t*2*PI/360.0;
-   // if( t >= 360.0) angle -= 2*PI;
-}
 
 
 void SceneBasic::setMatrices()
@@ -277,3 +302,5 @@ void SceneBasic::printActiveAttribs(GLuint programHandle) {
 
     free(name);
 }
+
+

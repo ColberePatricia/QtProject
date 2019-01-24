@@ -32,7 +32,8 @@ SOURCES += \
     main.cpp \
     mainview.cpp \
     scenebasic.cpp \
-    dialog.cpp
+    dialogviewposition.cpp \
+    dialoglinerotation.cpp
 
 HEADERS += \
         mainwindow.h \
@@ -41,11 +42,13 @@ HEADERS += \
     mainview.h \
     scene.h \
     scenebasic.h \
-    dialog.h
+    dialogviewposition.h \
+    dialoglinerotation.h
 
 FORMS += \
         mainwindow.ui \
-    dialog.ui
+    dialogviewposition.ui \
+    dialoglinerotation.ui
 
 # Default rules for deployment.
 qnx: target.path = /tmp/$${TARGET}/bin

@@ -38,6 +38,10 @@ public:
 
     void printActiveUniforms(GLuint programHandle);
     void printActiveAttribs(GLuint programHandle);
+
+    void updateView(float eX, float eY, float eZ, float directX, float directY, float directZ);
+    // phi is in degrees
+    void rotateModel(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi);
 };
 
 #endif // SCENEBASIC_H

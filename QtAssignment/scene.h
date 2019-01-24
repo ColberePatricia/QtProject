@@ -27,6 +27,10 @@ public:
     virtual void resize(int, int) = 0;
 
     virtual void setAngle(float) = 0;
+
+    virtual void updateView(float eX, float eY, float eZ, float directX, float directY, float directZ) = 0;
+    virtual void rotateModel(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi) = 0;
+
 };
 
 #endif // SCENE_H

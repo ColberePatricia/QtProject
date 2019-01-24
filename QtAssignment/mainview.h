@@ -7,6 +7,10 @@
 #include <QTimer>
 
 #include "scene.h"
+#include "scenebasic.h"
+#include "glutils.h"
+#include <iostream>
+#include <cstdio>
 
 class MainView : public QGLWidget
 {
@@ -16,6 +20,9 @@ private:
     QTimer *timer;
     Scene *scene;
     float angle;
+    // We create the variables we will be manipulating by updating the view and rotating the model
+    float eX, eY, eZ, directX, directY, directZ;
+    float bX, bY, bZ, dX, dY, dZ, phi;
 
 public:
     MainView( const QGLFormat & format, QWidget *parent = 0 );
@@ -27,6 +34,10 @@ protected:
 
 public:
     void setAngle(float);
+    // Updates the view from the scenebasic class
+    void updateView(float eX, float eY, float eZ, float directX, float directY, float directZ);
+    // Updates the model from the scenebasic class
+    void rotateModel(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi);
 
 public slots:
     void timerUpdate();

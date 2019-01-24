@@ -1,8 +1,5 @@
 #include "mainview.h"
-#include "scenebasic.h"
-#include "glutils.h"
-#include <iostream>
-#include <cstdio>
+#include <QDebug>
 using std::cout;
 using std::endl;
 
@@ -22,9 +19,42 @@ MainView::MainView(const QGLFormat & format, QWidget *parent) : QGLWidget(format
 
 void MainView::setAngle(float angle)
 {
-    this->angle = angle;
+    //this->angle = angle;
+    qDebug()<<"READ angle "<<angle;
     scene->setAngle(angle);
+
+    qDebug()<<"painting gl "<<angle;
     paintGL();
+}
+
+void MainView::updateView(float eX, float eY, float eZ, float directX, float directY, float directZ)
+{
+    qDebug()<<"READ eX "<<eX;
+    this->eX = eX;
+    /*qDebug()<<"READ eX "<<this->eX;
+    this->eY = eY;
+    this->eZ = eZ;
+    this->directX = directX;
+    this->directY = directY;
+    this->directZ = directZ;*/
+    //scene->updateView(eX, eY, eZ, directX, directY, directZ);
+    this->angle = eX;
+    qDebug()<<"READ eX "<<eX;
+    scene->setAngle(eX);
+    //paintGL();
+}
+
+
+void MainView::rotateModel(float bX, float bY, float bZ, float dX, float dY, float dZ, float phi){
+    /*this->bX = bX;
+    this->bY = bY;
+    this->bZ = bZ;
+    this->dX = dX;
+    this->dY = dY;
+    this->dZ = dZ;
+    this->phi = phi;*/
+    //scene->rotateModel(bX, bY, bZ, dX, dY, dZ, phi);
+    //paintGL();
 }
 
 void MainView::initializeGL() {
