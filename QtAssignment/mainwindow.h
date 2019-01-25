@@ -37,8 +37,6 @@ private:
     Ui::MainWindow *ui;
     MainView* view;
     float angle;
-    //DialogLineRotation dlrot;
-    //DialogViewPosition dvposition;
 
     //These values are recuperated from the user and sent to change the scene
     float eX, eY, eZ, directX, directY, directZ;
